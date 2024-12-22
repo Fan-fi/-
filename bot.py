@@ -1,28 +1,22 @@
-import time, threading,  schedule
+import time, threading, schedule
 from telebot import TeleBot
 
-# Этот токен ты получаешь от BotFather, чтобы бот мог работать
-bot = TeleBot("7801153685:AAGtb6z0OMsEmWDn0pzSAThVltqFrABEiuY")
-# Обработчик команды '/start' и '/hello'
-@bot.message_handler(commands=['start', 'hello'])
+API_TOKEN = '7801153685:AAGtb6z0OMsEmWDn0pzSAThVltqFrABEiuY'
+bot = TeleBot(API_TOKEN)
+
+
+@bot.message_handler(commands=['start','hello'])
 def send_welcome(message):
-    bot.reply_to(message, f'Привет! Я бот {bot.get_me().first_name}!')
+    bot.reply_to(message, f"Привет! Я бот {bot.get_me().first_name}!'напишите /help для просмотра функций ")
 
-
-# Обработчик команды '/heh'
-@bot.message_handler(commands=['heh'])
-def send_heh(message):
-    count_heh = int(message.text.split()[1]) if len(message.text.split()) > 1 else 5
-    bot.reply_to(message, "he" * count_heh)
-
+@bot.message_handler(commands=['help'])
+def send_help(message):
+    bot.reply_to(message, "/start-приветствие, /help-просмотр функций, /set <секунды> - начать таймер , /unset- закончить таймер")
 
 def beep(chat_id) -> None:
     """Send the beep message."""
     bot.send_message(chat_id, text='Beep!')
 
-def beep(chat_id) -> None:
-    """Send the beep message."""
-    bot.send_message(chat_id, text='Beep!')
 
 @bot.message_handler(commands=['set'])
 def set_timer(message):
@@ -44,7 +38,4 @@ if __name__ == '__main__':
     while True:
         schedule.run_pending()
         time.sleep(1)
-
-
-
 bot.polling()
