@@ -16,8 +16,6 @@ def send_heh(message):
     bot.reply_to(message, "he" * count_heh)
 
 
-
-
 def beep(chat_id) -> None:
     """Send the beep message."""
     bot.send_message(chat_id, text='Beep!')
