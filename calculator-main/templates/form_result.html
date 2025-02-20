@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результаты формы</title>
+    <link rel="stylesheet" href="../../static/css/1.css">
+</head>
+<body>
+    {% block content %}
+    <h1  align="center">Спасибо за заполнение формы!</h1>
+    <p  align="center">Ваше имя: {{ name }}</p>
+    <p  align="center">Ваша электронная почта: {{ email }}</p>
+    <p  align="center">Ваш адрес: {{ address }}</p>
+    <p  align="center">Ваша дата: {{ date }}</p>
+    <p  align="center"><img src="https://do.tgl.ru/uploads/posts/2018-12/1543899043_13978930351786662669environment-1.jpg" width="40%" height="30%"></p>
+    {% endblock %}
+</body>
+</html>
